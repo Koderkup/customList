@@ -1,0 +1,25 @@
+{
+  "name": "customlist",
+  "version": "1.0.0",
+  "description": "list purchased products",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Koderkup"
+  },
+  "author": "koderkup",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.4.0",
+    "nodemon": "^2.0.22",
+    "sequelize": "^6.32.1"
+  }
+}
