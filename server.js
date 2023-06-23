@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const mysql = require("mysql");
+
 dotenv.config();
 const app = express();
 const conn = {
@@ -44,15 +45,17 @@ const createProductsTable = () => {
     console.log("products table created or already exists");
   });
 };
-
+app.use(express.json());
+app.use(cors());
+app.use("/user", require("./routes/userRouter"));
 const start = async () => {
   try {
     connect.connect((err) => {
       if (err) console.log(err);
       else {
         console.log("Connection database ok");
-        createUsersTable(); 
-        createProductsTable(); 
+        createUsersTable();
+        createProductsTable();
       }
     });
     app.listen(process.env.PORT, () => {
@@ -64,3 +67,4 @@ const start = async () => {
 };
 
 start();
+
