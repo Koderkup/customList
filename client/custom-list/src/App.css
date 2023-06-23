@@ -5,6 +5,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  border: 2px solid #F92672;
+  margin: auto;
+  margin-bottom: 2em;
+  width: 90%;
 }
 
 a {
@@ -17,10 +21,8 @@ a {
   list-style-type: none;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid #F92672;
-  width: 90%;
-  height: 10vh;
   padding: 1em;
+  gap: 1em;
 }
 
 .menu input,
@@ -36,7 +38,7 @@ label {
 .container {
   border: 2px solid #A6E22E;
   width: 90%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 1em;
   display: flex;
   justify-content: center;
@@ -84,6 +86,7 @@ label {
 }
 
 .input-wrapper {
+  height: 100%;
   flex-grow: 2;
   display: flex;
   flex-direction: column;
@@ -114,4 +117,51 @@ label {
   height: 3em;
 }
 
-@media (max-width: 768px) {}
+@media (max-width: 1000px) {
+
+  .register-container,
+  .login-container,
+  .input-wrapper,
+  .button-wraper,
+  .item,
+  .choice {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .register-container,
+  .login-container {
+    height: 600px;
+  }
+
+  .App-header {
+    flex-direction: column;
+    min-height: 50vh;
+    align-items: center;
+  }
+
+  .menu {
+    min-height: 30vh;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button {
+    width: 100%;
+    padding: 1em;
+  }
+
+  .button-wraper {
+    height: 4em;
+  }
+
+  .container {
+    min-height: 100vh;
+    padding: 2em;
+  }
+
+  .button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+}

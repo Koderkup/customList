@@ -14,7 +14,7 @@ const Header = () => {
     <header className="App-header">
       <ul className="menu">
         <li>Здесь может быть Ваш журнал расходов</li>
-        <li>{name || "Гость"}</li>
+        <li style={{ background: "red" }}>{name || "Гость"}</li>
         <li>
           <label htmlFor="startDateInput">Начальная дата:</label>
           <input
@@ -36,7 +36,7 @@ const Header = () => {
           />
         </li>
         <li>
-         <Link to="/login">Войти</Link>
+          <Link to="/login">Войти</Link>
         </li>
       </ul>
     </header>

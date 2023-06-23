@@ -4,6 +4,10 @@ const Register = () => {
     <form className="login-container">
       <div className="input-wrapper">
         <div className="item">
+          <label htmlFor="email">Name:</label>
+          <input type="email" id="email" name="email" required></input>
+        </div>
+        <div className="item">
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" required></input>
         </div>
