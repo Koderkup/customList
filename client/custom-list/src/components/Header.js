@@ -1,20 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import jwt_decode from "jwt-decode";
 const Header = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [name, setName] = useState("");
-
+  const [user, setUser] = useState("");
+  const [isLogged, setIsLogged] = useState(false);
+  const { name } = useSelector((state) => state.auth);
+  const handleClick = () => {
+    if (isLogged) {
+      setIsLogged(false);
+      localStorage.setItem("auth", "");
+    }
+  };
   useEffect(() => {
     const formattedDate = new Date().toISOString().substr(0, 10);
     setEndDate(formattedDate);
     setStartDate(formattedDate);
+    const auth = localStorage.getItem("auth");
+    if (auth) {
+      const decodedToken = jwt_decode(auth);
+      setUser(decodedToken.name);
+    }
+    if (user) setIsLogged(true);
+    else setIsLogged(false);
   }, [name]);
   return (
     <header className="App-header">
       <ul className="menu">
         <li>Здесь может быть Ваш журнал расходов</li>
-        <li style={{ background: "red" }}>{name || "Гость"}</li>
+        <li style={{ background: "red" }}>{user || "Гость"}</li>
         <li>
           <label htmlFor="startDateInput">Начальная дата:</label>
           <input
@@ -36,7 +52,9 @@ const Header = () => {
           />
         </li>
         <li>
-          <Link to="/login">Войти</Link>
+          <Link to="/login" onClick={handleClick}>
+            {isLogged ? "Выйти" : "Войти"}
+          </Link>
         </li>
       </ul>
     </header>

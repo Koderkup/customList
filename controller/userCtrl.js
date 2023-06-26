@@ -21,7 +21,6 @@ const connect = mysql.createConnection(conn);
 class UserController {
   async registration(req, res) {
     const { name, email, password } = req.body;
-
     // Проверяем, существует ли пользователь с заданным email
     const checkUserQuery = `SELECT * FROM users WHERE email = '${email}'`;
     connect.query(checkUserQuery, async (error, results) => {
@@ -50,7 +49,6 @@ if (password.length < 6)
 
         // Получаем id созданного пользователя
         const userId = results.insertId;
-
         // Создаем токен для нового пользователя
         const token = generateJwt(userId, email, name);
         return res.json({ token });

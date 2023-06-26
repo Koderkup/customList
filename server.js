@@ -24,7 +24,6 @@ const createUsersTable = () => {
   `;
   connect.query(sql, (err, result) => {
     if (err) throw err;
-    console.log("users table created or already exists");
   });
 };
 
@@ -42,7 +41,6 @@ const createProductsTable = () => {
   `;
   connect.query(sql, (err, result) => {
     if (err) throw err;
-    console.log("products table created or already exists");
   });
 };
 app.use(express.json());
@@ -53,7 +51,6 @@ const start = async () => {
     connect.connect((err) => {
       if (err) console.log(err);
       else {
-        console.log("Connection database ok");
         createUsersTable();
         createProductsTable();
       }
